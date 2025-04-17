@@ -624,13 +624,102 @@
 
         <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
 
-          <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
-            <li data-filter="*" class="filter-active">Todos</li>
-            <li data-filter=".filter-app">Desenvolvimento de Site</li>
-            <li data-filter=".filter-product">Automação de Processos</li>
-            <li data-filter=".filter-branding">Gestão de Tráfego Pago</li>
-            <li data-filter=".filter-books">Catálogo DIgital</li>
-          </ul><!-- End Portfolio Filters -->
+          <ul class="portfolio-filters isotope-filters d-flex flex-wrap justify-content-center gap-3 py-3" data-aos="fade-up" data-aos-delay="100" style="list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem;">
+
+            <li data-filter="*" class="filter-btn active" style="
+              padding: 10px 20px;
+              background: #0d6efd;
+              border: 2px solid #0d6efd;
+              color: #ffffff;
+              border-radius: 50px;
+              font-weight: 600;
+              box-shadow: 0 6px 20px rgba(13, 110, 253, 0.4);
+              cursor: pointer;
+              transition: all 0.3s ease-in-out;
+            " onmouseover="this.style.background='#ffffff'; this.style.color='#0d6efd';" onmouseout="this.style.background='#0d6efd'; this.style.color='#ffffff';">
+              Todos
+            </li>
+          
+            <li data-filter=".filter-app" class="filter-btn" style="
+              padding: 10px 20px;
+              background: #ffffff;
+              border: 2px solid #0d6efd;
+              color: #0d6efd;
+              border-radius: 50px;
+              font-weight: 600;
+              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+              cursor: pointer;
+              transition: all 0.3s ease-in-out;
+            " onmouseover="this.style.background='#0d6efd'; this.style.color='#ffffff';" onmouseout="this.style.background='#ffffff'; this.style.color='#0d6efd';">
+              Desenvolvimento de Site
+            </li>
+          
+            <li data-filter=".filter-product" class="filter-btn" style="
+              padding: 10px 20px;
+              background: #ffffff;
+              border: 2px solid #0d6efd;
+              color: #0d6efd;
+              border-radius: 50px;
+              font-weight: 600;
+              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+              cursor: pointer;
+              transition: all 0.3s ease-in-out;
+            " onmouseover="this.style.background='#0d6efd'; this.style.color='#ffffff';" onmouseout="this.style.background='#ffffff'; this.style.color='#0d6efd';">
+              Automação de Processos
+            </li>
+          
+            <li data-filter=".filter-branding" class="filter-btn" style="
+              padding: 10px 20px;
+              background: #ffffff;
+              border: 2px solid #0d6efd;
+              color: #0d6efd;
+              border-radius: 50px;
+              font-weight: 600;
+              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+              cursor: pointer;
+              transition: all 0.3s ease-in-out;
+            " onmouseover="this.style.background='#0d6efd'; this.style.color='#ffffff';" onmouseout="this.style.background='#ffffff'; this.style.color='#0d6efd';">
+              Gestão de Tráfego Pago
+            </li>
+          
+            <li data-filter=".filter-books" class="filter-btn" style="
+              padding: 10px 20px;
+              background: #ffffff;
+              border: 2px solid #0d6efd;
+              color: #0d6efd;
+              border-radius: 50px;
+              font-weight: 600;
+              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+              cursor: pointer;
+              transition: all 0.3s ease-in-out;
+            " onmouseover="this.style.background='#0d6efd'; this.style.color='#ffffff';" onmouseout="this.style.background='#ffffff'; this.style.color='#0d6efd';">
+              Catálogo Digital
+            </li>
+          
+          </ul>
+          <script>
+            window.addEventListener('load', () => {
+              let grid = document.querySelector('.isotope-container');
+              if (grid) {
+                let iso = new Isotope(grid, {
+                  itemSelector: '.portfolio-item',
+                  layoutMode: 'fitRows'
+                });
+          
+                let filterButtons = document.querySelectorAll('.portfolio-filters li');
+                filterButtons.forEach(button => {
+                  button.addEventListener('click', () => {
+                    filterButtons.forEach(btn => btn.classList.remove('filter-active', 'active'));
+                    button.classList.add('filter-active', 'active');
+                    let filterValue = button.getAttribute('data-filter');
+                    iso.arrange({ filter: filterValue });
+                  });
+                });
+              }
+            });
+          </script>
+          
+          
 
           <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
 
